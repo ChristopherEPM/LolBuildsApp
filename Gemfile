@@ -50,8 +50,10 @@ group :development do
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
   gem 'spring'
 
-  #replaces the standard Rails error page with a much better and more useful error page
+  # Replaces the standard Rails error page with a much better and more useful error page
   gem 'better_errors'
+  # Better Errors' advanced features (REPL, local/instance variable inspection, pretty stack frame names)
+  gem "binding_of_caller"
 end
 
 
