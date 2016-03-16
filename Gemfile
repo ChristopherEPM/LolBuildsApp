@@ -1,6 +1,7 @@
 source 'https://rubygems.org'
 
 
+ruby '2.2.1'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.2.5.1'
 # Use postgresql as the database for Active Record
@@ -37,12 +38,23 @@ gem 'figaro'
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 
+# gem  get conection with RIOT API, and give some nice methods
+gem 'ruby-lol'
+
+gem 'sass'
+gem 'haml'
+
 group :development, :test do
   gem 'rspec-rails'
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug'
   #to use the Rails panel extension in chrome
   gem 'meta_request'
+
+  gem 'capybara'
+
+  gem 'guard-rspec'
+  gem 'guard-rails'
 end
 
 
@@ -53,10 +65,13 @@ group :development do
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
   gem 'spring'
 
+  gem 'pry'
+
   # Replaces the standard Rails error page with a much better and more useful error page
   gem 'better_errors'
   # Better Errors' advanced features (REPL, local/instance variable inspection, pretty stack frame names)
   gem "binding_of_caller"
+
 end
 
 
