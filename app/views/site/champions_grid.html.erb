@@ -1,0 +1,10 @@
+<article class="main-wrapper">
+  <div class="champions-grid">
+    
+      <% @champions.each do | champion | %>
+        <a href="#"><img class="champions-grid-main" src=<%="http://ddragon.leagueoflegends.com/cdn/6.5.1/img/champion/#{champion.image['full']}" %> alt="Link to <%= champion.name%> profile" title="<%="#{champion.name}, #{champion.title}" %>" > </a>
+      <% end %>
+
+  </div>
+</article>
+
