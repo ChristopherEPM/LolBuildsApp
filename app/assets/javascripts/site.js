@@ -4,42 +4,35 @@
 //var dev2 = Figaro.env.dev_api_key;
 //console.log(dev);
 //console.log(dev2);
-var ajaxRequest = function (){
-  console.log("Starting ajax Request ");
-  $.ajax({
-    type: 'GET',
-    url:'https://global.api.pvp.net/api/lol/static-data/euw/v1.2/champion?api_key=754c3074-aa73-40e7-9404-68f77b1f79d2',
-    success: renderResults,
-    error: ajaxRequestError
-  });
-  //$.get('https://global.api.pvp.net/api/lol/static-data/euw/v1.2/champion?api_key=754c3074-aa73-40e7-9404-68f77b1f79d2').done(renderResults);
-};
+// var ajaxRequest = function (){
+//   console.log("Starting ajax Request ");
+//   $.ajax({
+//     type: 'GET',
+//     url:'https://global.api.pvp.net/api/lol/static-data/euw/v1.2/champion?api_key=754c3074-aa73-40e7-9404-68f77b1f79d2',
+//     success: renderResults,
+//     error: ajaxRequestError
+//   });
+// };
 
-var renderResults = function(requestResultsAsJson){
-  console.log(requestResultsAsJson.data);
-  renderChampionName(requestResultsAsJson.data);
-}
+// var renderResults = function(requestResultsAsJson){
+//   console.log(requestResultsAsJson.data);
+//   renderChampionName(requestResultsAsJson.data);
+// }
 
 
-var ajaxRequestError = function(requestResultsAsJson){
-  console.log(requestResultsAsJson);
-}
+// var ajaxRequestError = function(requestResultsAsJson){
+//   console.log(requestResultsAsJson);
+// }
 
-var renderChampionName = function(championsData){ 
-  // championsData.forEach( function appendName(element){
-  //   $(".champions-grid").append('<p>'+element.name+'</p>');
-  // });
-  for(var index in championsData){
-    $(".champions-grid").append('<p>'+championsData[index].name+'</p>');
-  }
-  // $.each(championsData, function appendName(element){
-  //    //console.log(, i);
-  //   $(".champions-grid").append('<p>'+element.name+'</p>');
-  // });
-}
-$(document).ready(function(){ //handlers
-  ajaxRequest();
-});
+// var renderChampionName = function(championsData){ 
+//   for(var index in championsData){
+//     $(".champions-grid").append('<a href="#"><img class="champions-gridd-main" src="http://ddragon.leagueoflegends.com/cdn/6.5.1/img/champion/'+championsData[index].key+'.png" alt="img/link to '+championsData[index].name+' champion data"></a>');
+//   }
+  
+// }
+// $(document).ready(function(){ //handlers
+//   ajaxRequest();
+// });
 
 
 
