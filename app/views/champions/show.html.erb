@@ -1,0 +1,108 @@
+<article class="main-wrapper">
+  <div class="champion-wrapper">
+    <h2><%="#{@champion.key} #{@champion.title}" %></h2>
+    <img src=<%="http://ddragon.leagueoflegends.com/cdn/img/champion/splash/#{@champion.key}_0.jpg"%>>
+    <ul>
+      <li><label for="champ-lv"> Champion Level:</label>
+        <input type="number" min="1" max="18" name="champ-lv" size="40" class="js-champlv" 
+        size="30" value="1">
+      <li>Attack damage: 
+        <span id="champ-attackdamage" data-stat="<%= @champion.stats['attackdamage']%>"
+        value="<%= @champion.stats['attackdamage']%>">
+          <%= @champion.stats['attackdamage']%></span>
+      </li>
+      <li>Attack damage x lv: 
+        <span id="champ-attackdamageperlevel" data-stat="<%= @champion.stats['attackdamageperlevel']%>"
+        value="<%= @champion.stats['attackdamageperlevel']%>"> 
+          <%= @champion.stats['attackdamageperlevel']%></span>
+      </li>
+      <li>Critic: 
+        <span id="champ-crit" data-stat="<%= @champion.stats['crit']%>"
+        value="<%= @champion.stats['crit']%>">
+          <%= @champion.stats['crit']%></span>
+      </li>
+      <li>Critic x lv: 
+        <span id="champ-critperlevel" data-stat="<%= @champion.stats['critperlevel']%>"
+        value="<%= @champion.stats['critperlevel']%>">
+          <%= @champion.stats['critperlevel']%></span>
+      </li>
+      <li>Armor: 
+        <span id="champ-armor" data-stat="<%= @champion.stats['armor']%>" 
+        value="<%= @champion.stats['armor']%>">
+          <%= @champion.stats['armor']%></span>
+      </li>
+      <li>Armor x lv: 
+        <span id="champ-armorperlevel" data-stat="<%= @champion.stats['armorperlevel']%>"
+        value="<%= @champion.stats['armorperlevel']%>">
+          <%= @champion.stats['armorperlevel']%></span>
+      </li>
+      <li>Magic resistance: 
+        <span id="champ-spellblock" data-stat="<%= @champion.stats['spellblock']%>"
+        value="<%= @champion.stats['spellblock']%>">
+          <%= @champion.stats['spellblock']%></span>
+      </li>
+      <li>Magic resistance x level: 
+        <span id="champ-spellblockperlevel" data-stat="<%= @champion.stats['spellblockperlevel']%>"
+        value="<%= @champion.stats['spellblockperlevel']%>">
+          <%= @champion.stats['spellblockperlevel']%></span>
+      </li>
+      <li>Hp: 
+        <span id="champ-hp" data-stat="<%= @champion.stats['hp']%>"
+        value="<%= @champion.stats['hp']%>">
+          <%= @champion.stats['hp']%></span>
+      </li>
+      <li>Hp x lv: 
+        <span id="champ-hpperlevel" data-stat="<%= @champion.stats['hpperlevel']%>"
+        value="<%= @champion.stats['hpperlevel']%>">
+          <%= @champion.stats['hpperlevel']%></span>
+      </li>
+      <li>Hp regen: 
+        <span id="champ-hpregen" data-stat="<%= @champion.stats['hpregen']%>" 
+        value="<%= @champion.stats['hpregen']%>">
+          <%= @champion.stats['hpregen']%></span>
+      </li>
+      <li>Hp regen x lv: 
+        <span id="champ-hpregenperlevel" data-stat="<%= @champion.stats['hpregenperlevel']%>"
+        value="<%= @champion.stats['hpregenperlevel']%>">
+          <%= @champion.stats['hpregenperlevel']%></span>
+      </li>
+      <li>Move Speed: 
+        <span id="champ-movespeed" data-stat="<%= @champion.stats['movespeed']%>"
+        value="<%= @champion.stats['movespeed']%>">
+        <%= @champion.stats['movespeed']%></span>
+      </li>
+      <li>Resources:
+        <span id="champ-mp" data-stat="<%= @champion.stats['mp']%>"
+        value="<%= @champion.stats['mp']%>">
+          <%= @champion.stats['mp']%></span>
+      </li>
+      <li>Resources x lv: 
+        <span id="champ-mpperlevel" data-stat="<%= @champion.stats['mpperlevel']%>"
+        value="<%= @champion.stats['mpperlevel']%>">
+          <%= @champion.stats['mpperlevel']%></span>
+      </li>
+      <li>Resources regen: 
+        <span id="champ-mpregen" data-stat="<%= @champion.stats['mpregen']%>"
+        value="<%= @champion.stats['mpregen']%>">
+          <%= @champion.stats['mpregen']%></span>
+      </li>
+      <li>Resources regen x lv: 
+        <span id="champ-mpregenperlevel" data-stat="<%= @champion.stats['mpregenperlevel']%>"
+        value="<%= @champion.stats['mpregenperlevel']%>">
+          <%= @champion.stats['mpregenperlevel']%></span>
+      </li>
+      <li>Magic power: 
+        <span id="champ-magicpower" data-stat="0.0" value="0.0">0.0</span></li>
+        <li>Magic power x lv: 
+        <span id="champ-magicpowerperlevel" data-stat="0.0" value="0.0">0.0</span></li>
+      <li>Flat Magic penetration: 
+        <span id="champ-fmagicpen" data-stat="0.0" value="0.0">0.0</span></li>
+      <li>% Magic penetration: 
+        <span id="champ-xcentmagicpen" data-stat="0.0" value="0.0">0.0</span> %</li> 
+      <li>Flat Armor penetration: 
+        <span id="champ-farmorpem" data-stat="0.0%" value="0.0">0.0</span></li>
+      <li>% Armor penetration: 
+        <span id="champ-xcentarmorpen" data-stat="0.0%" value="0.0">0.0</span> %</li> 
+    </ul>
+  </div>
+</article>
