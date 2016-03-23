@@ -9,42 +9,78 @@ Number.prototype.toFixedDown = function(digits) {
 var getBaseStatsPerLevel = function(champLevel){
     // var atack =$('#champ-attackdamage').data('stat');
     // var bonusAtack = $('#champ-attackdamageperlevel').data('stat') * champLevel;
-    if($('#champ-attackdamageperlevel').data('stat') > 0){
-      renderAtackDamage(($('#champ-attackdamageperlevel').data('stat') * champLevel) + ($('#champ-attackdamage').data('stat')) ); 
+    if(parseFloat($('#champ-attackdamageperlevel').data('stat')) > 0){
+      renderAtackDamage((parseFloat($('#champ-attackdamageperlevel').data('stat')) * champLevel) + parseFloat($('#champ-attackdamage').data('stat')) + parseFloat($('.js-flatPhysicalDamage').attr('data-statsamount')));
     }
-    if($('#champ-critperlevel').data('stat') > 0){
-      renderCritic(($('#champ-critperlevel').data('stat') * champLevel) + ($('#champ-crit').data('stat')) ); 
+    else{
+      renderAtackDamage( parseFloat($('#champ-attackdamage').data('stat')) + parseFloat($('.js-flatPhysicalDamage').attr('data-statsamount')) );
     }
-    if($('#champ-armorperlevel').data('stat') > 0){
-      renderArmor(($('#champ-armorperlevel').data('stat') * champLevel) + ($('#champ-armor').data('stat')) ); 
+    if(parseFloat($('#champ-critperlevel').data('stat')) > 0){
+      renderCritic((parseFloat($('#champ-critperlevel').data('stat')) * champLevel) + parseFloat($('#champ-crit').data('stat')) ); 
     }
-    if($('#champ-spellblockperlevel').data('stat') > 0){
-      renderSpellBlock(($('#champ-spellblockperlevel').data('stat') * champLevel) + ($('#champ-spellblock').data('stat')) ); 
+    if(parseFloat($('#champ-critchanceperlevel').data('stat')) > 0){
+      renderCritic((parseFloat($('#champ-critchanceperlevel').data('stat')) * champLevel) + parseFloat($('#champ-critchance').data('stat')) + parseFloat($('.js-flatCritChance').attr('data-statsamount')));
     }
-    if($('#champ-hpperlevel').data('stat') > 0){
-      renderHp(($('#champ-hpperlevel').data('stat') * champLevel) + ($('#champ-hp').data('stat')) ); 
+    else{
+      renderCriticChance(parseFloat($('#champ-critchance').data('stat')) + parseFloat($('.js-flatCritChance').attr('data-statsamount')));
     }
-    if($('#champ-hpregenperlevel').data('stat') > 0){
-      renderHpRegen(($('#champ-hpregenperlevel').data('stat') * champLevel) + ($('#champ-hpregen').data('stat')) ); 
+    if(parseFloat($('#champ-armorperlevel').data('stat')) > 0){
+      renderArmor((parseFloat($('#champ-armorperlevel').data('stat')) * champLevel) + parseFloat($('#champ-armor').data('stat')) + parseFloat($('.js-flatArmor').attr('data-statsamount'))); 
     }
-    if($('#champ-mpperlevel').data('stat') > 0){
-      renderResources(($('#champ-mpperlevel').data('stat') * champLevel) + ($('#champ-mp').data('stat')) ); 
+    else{
+      renderArmor(parseFloat($('#champ-armor').data('stat')) + parseFloat($('.js-flatArmor').attr('data-statsamount')));
     }
-    if($('#champ-mpregenperlevel').data('stat') > 0){
-      renderResourcesRegen(($('#champ-mpregenperlevel').data('stat') * champLevel) + ($('#champ-mpregen').data('stat')) ); 
+    if(parseFloat($('#champ-spellblockperlevel').data('stat')) > 0){
+      renderSpellBlock((parseFloat($('#champ-spellblockperlevel').data('stat')) * champLevel) + parseFloat($('#champ-spellblock').data('stat')) + parseFloat($('.js-flatSpellBlock').attr('data-statsamount'))); 
     }
-    if($('#champ-magicpowerperlevel').data('stat') > 0){
-      renderResourcesRegen(($('#champ-magicpowerperlevel').data('stat') * champLevel) + ($('#champ-magicpowerper').data('stat')) ); 
+    else{
+      renderSpellBlock(parseFloat($('#champ-spellblock').data('stat')) + parseFloat($('.js-flatSpellBlock').attr('data-statsamount')));
     }
+    if(parseFloat($('#champ-hpperlevel').data('stat')) > 0){
+      renderHp((parseFloat($('#champ-hpperlevel').data('stat')) * champLevel) + parseFloat($('#champ-hp').data('stat')) + parseFloat($('.js-flatHPPool').attr('data-statsamount'))); 
+    }
+    else{
+      renderHP(parseFloat($('#champ-hp').data('stat')) + parseFloat($('.js-flatHPPool').attr('data-statsamount')));
+    }
+    if(parseFloat($('#champ-hpregenperlevel').data('stat')) > 0){
+      renderHpRegen((parseFloat($('#champ-hpregenperlevel').data('stat')) * champLevel) + parseFloat($('#champ-hpregen').data('stat')) + parseFloat($('.js-flatHPRegen').attr('data-statsamount'))); 
+    }
+    else{
+      renderHpRegen(parseFloat($('#champ-hpregen').data('stat')) + parseFloat($('.js-flatHPRegen').attr('data-statsamount')));
+    }
+    if(parseFloat($('#champ-mpperlevel').data('stat')) > 0){
+      if($('#champ-resourcetype').data('partype')==="MP"){
+        renderResources((parseFloat($('#champ-mpperlevel').data('stat')) * champLevel) + parseFloat($('#champ-mp').data('stat')) + parseFloat($('.js-flatMPPool').attr('data-statsamount')));        
+      }
+      else{
+        renderResources((parseFloat($('#champ-mpperlevel').data('stat')) * champLevel) + parseFloat($('#champ-mp').data('stat')) );
+      }
+      
+    }
+    else{
+      if($('#champ-resourcetype').data('partype')==="MP"){
+        renderResources(parseFloat($('#champ-mp').data('stat')) + parseFloat($('.js-flatMPPool').attr('data-statsamount')));        
+      }
+      else{
+        renderResources(parseFloat($('#champ-mp').data('stat')) );
+      }
+    }
+    if(parseFloat($('#champ-mpregenperlevel').data('stat')) > 0){
+      renderResourcesRegen((parseFloat($('#champ-mpregenperlevel').data('stat') * champLevel)) + parseFloat($('#champ-mpregen').data('stat')) ); 
+    }
+    renderMagicPower(parseFloat($('#champ-magicpower').data('stat')) + parseFloat($('.js-flatMagicDamage').attr('data-statsamount')));
+    
 
 }
 
 var renderAtackDamage = function(calculatedAtack){
   $("#champ-attackdamage").text(calculatedAtack.toFixedDown(3));
-
 }
 var renderCritic = function(calculatedCritic){
   $("#champ-crit").text(calculatedCritic.toFixedDown(3));
+}
+var renderCriticChance =  function(calculatedCriticChance){
+  $("#champ-critchance").text(calculatedCriticChance.toFixedDown(3));
 }
 var renderArmor = function(calculatedArmor){
   $("#champ-armor").text(calculatedArmor.toFixedDown(3));
@@ -68,10 +104,10 @@ var renderResourcesRegen = function(calculatedResourcesRegen){
   $("#champ-mpregen").text(calculatedResourcesRegen.toFixedDown(3));
 }
 var renderMagicPower = function(calculatedMagicPower){
-  $("#champ-magicpower").text(calculatedArmor.toFixedDown(3));
+  $("#champ-magicpower").text(calculatedMagicPower.toFixedDown(3));
 }
 var renderFlatMagicPen = function(calculatedFlatMagicPenetration){
-  $("#champ-fmagicpen").text(calculatedArmor.toFixedDown(3));
+  $("#champ-fmagicpen").text(calculatedFlatMagicPenetration.toFixedDown(3));
 }
 var renderPercentMagicPen = function(calculatedPercentMagicPenetration){
   $("#champ-xcentmagicpen").text(calculatedPercentMagicPenetration.toFixedDown(3));
@@ -112,5 +148,4 @@ $(document).ready(function(){
   // var playerTimeUpdateHandler = function(){
   //   $('.js-player').on('timeupdate', printTime);
   // }();
-
 });
