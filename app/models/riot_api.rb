@@ -1,4 +1,4 @@
-class RiotApi < ActiveRecord::Base
+class RiotApi
 
   # RIOT_API_URL = "https://euw.api.pvp.net/api/lol/na/v1.4/summoner/by-name/Biman?api_key=#{ENV['dev_api_key']}"
   # REQUEST_DEFAULTS = { :parse? => true }
