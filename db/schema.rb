@@ -11,15 +11,48 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160316095752) do
+ActiveRecord::Schema.define(version: 20160328152228) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "champions", force: :cascade do |t|
+    t.integer  "api_id"
+    t.string   "name"
+    t.string   "key"
+    t.string   "title"
+    t.string   "image"
+    t.text     "tags"
+    t.string   "partype"
+    t.text     "stats"
+    t.text     "spells"
+    t.text     "passive"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "gameversions", force: :cascade do |t|
     t.string   "version"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "items", force: :cascade do |t|
+    t.integer  "api_id"
+    t.string   "name"
+    t.string   "group"
+    t.text     "description"
+    t.text     "sanitizedDescription"
+    t.integer  "depth"
+    t.text     "from"
+    t.text     "into"
+    t.text     "maps"
+    t.string   "image"
+    t.text     "stats"
+    t.text     "gold"
+    t.text     "effect"
+    t.datetime "created_at",           null: false
+    t.datetime "updated_at",           null: false
   end
 
 end
