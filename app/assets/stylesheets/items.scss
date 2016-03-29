@@ -24,11 +24,14 @@
   overflow: scroll;
   overflow-x: hidden;
   margin-left: 10px;
+  -moz-box-shadow: 0 0 10px #1B216B;
+  -webkit-box-shadow: 0 0 10px #1B216B;
+  box-shadow: 0 0 10px #1B216B;
 }
 .itemlist-element{
   width: 100%;
   display: inline-block;
-  background-color: #304F99;
+  background-color: #272b30;
   padding:5px 5px 5px 5px;
 }
 .itemlist-element:hover{
@@ -49,13 +52,31 @@
   text-align: center;
   height: 5%;
   margin-left:10px;
+  background-image: -webkit-gradient(
+    linear,
+    left top,
+    left bottom,
+    color-stop(0, #1876DB),
+    color-stop(1, #0E2054)
+  );
+  background-image: -o-linear-gradient(bottom, #1876DB 0%, #0E2054 100%);
+  background-image: -moz-linear-gradient(bottom, #1876DB 0%, #0E2054 100%);
+  background-image: -webkit-linear-gradient(bottom, #1876DB 0%, #0E2054 100%);
+  background-image: -ms-linear-gradient(bottom, #1876DB 0%, #0E2054 100%);
+  background-image: linear-gradient(to bottom, #1876DB 0%, #0E2054 100%);
+  -moz-box-shadow: 0 0 10px #1B216B;
+  -webkit-box-shadow: 0 0 10px #1B216B;
+  box-shadow: 0 0 10px #1B216B;
 }
 .backpack-wrapper{
   margin-top: 10px;
-  background-color:#002237;
+  background-color:#272b30;
   max-width: 28%;
   min-width: 434px;
   height: 140px;
+  -moz-box-shadow: 0 0 10px #1B216B;
+  -webkit-box-shadow: 0 0 10px #1B216B;
+  box-shadow: 0 0 10px #1B216B;
 }
 .backpack-wrapper-title{
   background-color:#192E70;
@@ -66,6 +87,18 @@
   text-align: center;
   height: 32%;
   width: 100%;
+  background-image: -webkit-gradient(
+    linear,
+    left top,
+    left bottom,
+    color-stop(0, #1876DB),
+    color-stop(1, #0E2054)
+  );
+  background-image: -o-linear-gradient(bottom, #1876DB 0%, #0E2054 100%);
+  background-image: -moz-linear-gradient(bottom, #1876DB 0%, #0E2054 100%);
+  background-image: -webkit-linear-gradient(bottom, #1876DB 0%, #0E2054 100%);
+  background-image: -ms-linear-gradient(bottom, #1876DB 0%, #0E2054 100%);
+  background-image: linear-gradient(to bottom, #1876DB 0%, #0E2054 100%);
 }
 .backpack-items{
   padding-left:10px;
@@ -73,6 +106,9 @@
 .backpack-item-image{
   margin: 8px;
   width: 46px;
+  border-style: solid;
+  border-width: 2px;
+  border-color: #fbc02d;
   -webkit-transition: width 2s, height 2s, -webkit-transform 2s; 
   transition: width 2s, height 2s, transform 1s, border-radius 2s;
 
@@ -105,14 +141,26 @@
   min-width: 200px;
   text-align: center;
   width: 100%;
+  background-image: -webkit-gradient(
+    linear,
+    left top,
+    left bottom,
+    color-stop(0, #1876DB),
+    color-stop(1, #0E2054)
+  );
+  background-image: -o-linear-gradient(bottom, #1876DB 0%, #0E2054 100%);
+  background-image: -moz-linear-gradient(bottom, #1876DB 0%, #0E2054 100%);
+  background-image: -webkit-linear-gradient(bottom, #1876DB 0%, #0E2054 100%);
+  background-image: -ms-linear-gradient(bottom, #1876DB 0%, #0E2054 100%);
+  background-image: linear-gradient(to bottom, #1876DB 0%, #0E2054 100%);
 }
 .items-stats-ul li{
   display:inline-block;
   padding:5px;
-  border: 2px solid #e7e7e7;
   background-color: #01579b;
   color:#BDBBC9;
   min-width: 200px;
+  margin-bottom: 5px;
   border-radius: 5px;
   -webkit-border-radius: 5px;
   -moz-border-radius: 5px;

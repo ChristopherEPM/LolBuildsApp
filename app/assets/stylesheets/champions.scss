@@ -1,6 +1,12 @@
 // Place all the styles related to the champions controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+.withe{
+  color: #A3BAF0;
+}
+.numcolor{
+  color: black;
+}
 .main-wrapper{
   padding:0;
 }
@@ -44,6 +50,7 @@
   color:#f9a825;
   min-width: 200px;
   height: 34px;
+  margin: 5px;
   border-radius: 5px;
   -webkit-border-radius: 5px;
   -moz-border-radius: 5px;
