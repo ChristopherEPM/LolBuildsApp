@@ -1,26 +1,42 @@
-<div class="js-items-stats">
-  <ul> <h3>Item stats</h3>
-    <li>Magic Damage: <span class="js-flatMagicDamage" data-statsAmount="0"></span> </li>
-    <li>Physical Damage: <span class="js-flatPhysicalDamage" data-statsamount="0"></span> </li>
-    <li>% Attack Speed: <span class="js-percentAttackSpeed" data-statsamount="0"></span> </li>
-    <li>Crit Chance: <span class="js-flatCritChance" data-statsamount="0"></span> %</li>
-    <li>% Life Steal: <span class="js-percentLifeSteal" data-statsamount="0"></span> </li>
-    <li>Armor: <span class="js-flatArmor" data-amount="0"></span> </li>
-    <li>Magic Resist: <span class="js-flatSpellBlock" data-statsamount="0"></span> </li>
-    <li>HP: <span class="js-flatHPPool" data-statsamount="0"> </span> </li>
-    <li>HP Regen: <span class="js-flatHPRegen" data-statsamount="0"></span> </li>
-    <li>Mana: <span class="js-flatMPPool" data-statsamount="0"></span> </li>
-    <li>Movement Speed: <span class="js-flatMovementSpeed" data-statsamount="0"></span> </li>
-    <li>% Movement Speed: <span class="js-percentMovementSpeed" data-statsamount="0" ></span> </li>
-  </ul> 
- 
-</div>
-<div class="js-backpack">
-</div>
 
-<div class="js-itemlist">
-  <% @items.sort_by!{|it| it.name }.each do | item | %>
-    <img class="js-item" src=<%="http://ddragon.leagueoflegends.com/cdn/6.5.1/img/item/#{item.image['full']}" %> data-id=<%= item.id%> data-stats="<%="#{item.stats}" %>" data-tags="<%= "#{item.tags}"%>" data-name="<%= "#{item.name}" %>" data-tags="<%= "#{item.tags}" %>" data-description="<%= "#{item.description}"%>" title="<%= "#{item.sanitizedDescription}"%>" data-image="<%= "#{item.image['full']}" %>">
-  <% end %>
-  
-</div>
+  <div class="item-wrapper col-md-3">
+    <div class="item-wrapper-title">Items List</div>
+    <div class="js-itemlist itemlist">
+    
+      <% @items.sort_by{|it| it.name }.each do | item | %>
+      <div class="js-item-wrap itemlist-element">
+        <img class="js-item item-image" src=<%="http://ddragon.leagueoflegends.com/cdn/#{@version}/img/item/#{item.image}" %> data-id=<%= item.api_id%> data-stats="<%="#{item.stats}" %>" data-name="<%= "#{item.name}" %>" data-description="<%= "#{item.description}"%>" title="<%= "#{item.sanitizedDescription}"%>" data-image="<%= "#{item.image}" %>"><span class="item-name"><%= "#{item.name}" %></span>
+      </div>
+      <% end %>
+    </div>
+  </div>
+  <div class="col-md-5">
+    <div class="js-backpack backpack-wrapper">
+      <div class="backpack-wrapper-title">BackPack Items</div>
+      <div class="backpack-items"></div>
+    </div>
+    <div class="js-alert-bpi alert alert-dismissible alert-info" hidden>
+      <button type="button" class="js-alert-close close" data-dismiss="alert">&times;</button>
+      <strong>BackPack is full!</strong> You can add more items after delete someone. <p>Click on the backpack item to extract it! ;)</p>
+    </div>
+  </div>
+  <div class="js-items-stats items-stats-wrapper col-md-2">
+    <div class="items-wrapper-title">Item stats</div>
+    <ul class="items-stats-ul"> 
+      <li>Magic Damage: <span class="js-flatMagicDamage items-stats-ul-span" data-statsAmount="0">0</span> </li>
+      <li>Physical Damage: <span class="js-flatPhysicalDamage items-stats-ul-span" data-statsamount="0">0</span> </li>
+      <li>% Attack Speed: <span class="js-percentAttackSpeed items-stats-ul-span" data-statsamount="0">0</span> </li>
+      <li>Crit Chance: <span class="js-flatCritChance items-stats-ul-span" data-statsamount="0">0</span> %</li>
+      <li>% Life Steal: <span class="js-percentLifeSteal items-stats-ul-span" data-statsamount="0">0</span> </li>
+      <li>Armor: <span class="js-flatArmor items-stats-ul-span" data-statsamount="0">0</span></li>
+      <li>Magic Resist: <span class="js-flatSpellBlock items-stats-ul-span" data-statsamount="0">0</span> </li>
+      <li>HP: <span class="js-flatHPPool items-stats-ul-span" data-statsamount="0">0 </span> </li>
+      <li>HP Regen: <span class="js-flatHPRegen items-stats-ul-span" data-statsamount="0"></span> </li>
+      <li>Mana: <span class="js-flatMPPool items-stats-ul-span" data-statsamount="0">0</span></li>
+      <li>Movement Speed: <span class="js-flatMovementSpeed items-stats-ul-span" data-statsamount="0">0</span> </li>
+      <li>% Movement Speed: <span class="js-percentMovementSpeed items-stats-ul-span" data-statsamount="0" >0</span> </li>
+    </ul> 
+   
+  </div>
+
+
