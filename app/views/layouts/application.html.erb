@@ -2,17 +2,28 @@
 <html>
 <head>
   <title>LolBuildsApp</title>
-  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
-  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+  <%= stylesheet_link_tag    'application', media: 'all', 'data-track' => true %>
+  <%= javascript_include_tag 'application', 'data-track' => true %>
   <%= csrf_meta_tags %>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
 </head>
 <body>
   <header>
-    <nav class="sign-bar"></nav>
+    <span class="header-text">League of Legends Builds Stats</span>
   </header>
-  <nav class="nav-bar"></nav>
-  <%= yield %>
-  <footer>  
+  <div class="row">
+    <nav class="col-md-2">
+      <ul class="nav nav-pills nav-stacked ">
+        <li class="active"><%= link_to "Champions", root_path %></a></li> 
+        <li class="active"><a href="#">My Stats</a></li>
+      </ul>
+    </nav>
+    
+    <%= yield %>
+  </div>
+  
+  <footer class="page-footer">  
+
   </footer>
 </body>
 </html>
