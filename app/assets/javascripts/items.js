@@ -15,29 +15,15 @@ var extractItemStats = function(itemIndex){
   var actualBackPack = JSON.parse(window.localStorage.getItem("actualBackPackItemsStats"));
   setTotalStats();
 }
-var getOutBackPackitem = function(item){
-  $(item).remove();
-}
-
-var putBackPackItem = function(image,itemStats,itemDescription,itemId){ 
-  $('[class*=js-backpack-item]').each(function(index){
-    if($(this).attr('src')==""){
-      $(this).attr('src', image);
-      $(this).attr('data-stats', itemStats);
-      $(this).attr('data-description', itemDescription);
-      $(this).attr('data-itemId', itemId);
-        return false;
-    }
-  });
-}
 var renderItemBackPackImage = function(image, itemIndexPosition){
-  var itemImage = '<img src="http://ddragon.leagueoflegends.com/cdn/6.5.1/img/item/'+image+'" class="js-backpack-item" data-indexPosition="'+itemIndexPosition+'">';
-  $('.js-backpack').append(itemImage);
+  var itemImage = '<img src="http://ddragon.leagueoflegends.com/cdn/6.5.1/img/item/'+image+'" class="js-backpack-item backpack-item-image" data-indexPosition="'+itemIndexPosition+'">';
+  $('.backpack-items').append(itemImage);
 
    $('.js-backpack-item').on('click', function(){
         var itemIndex = $(this).attr('data-indexPosition');
         $(this).remove();
         extractItemStats(itemIndex);
+        $(".js-alert-bpi").fadeOut();
     });
 
 }
@@ -171,7 +157,11 @@ $(document).ready( function(){  //events handlers
     FlatMovementSpeed: 0, PercentMovementSpeed: 0, FlatCritChance: 0, FlatArmor: 0, FlatSpellBlock: 0, 
     FlatHPPool: 0, FlatHPRegen: 0, FlatMPPool: 0, PercentLifeSteal: 0 };
   
-  $('.js-item').on('click', function(){
+  $('.js-alert-close').on('click', function(){
+    $(".js-alert-bpi").fadeOut();
+  });
+
+  $('.js-item-wrap').on('click', function(){
     var actualBackPack = JSON.parse(window.localStorage.getItem("actualBackPackItemsStats")) || [];
     //debugger;
     var countNotNulls =0;
@@ -184,11 +174,10 @@ $(document).ready( function(){  //events handlers
     }
     //debugger;
     if((actualBackPack !==null && countNotNulls <= 6)){
-      
       for(var index = 0; index <= backPackLength; index++) {
         if(actualBackPack[index]===undefined || actualBackPack[index]===null){
-          renderItemBackPackImage($(this).data('image'), index);
-          actualBackPack[index] = JSON.parse($(this).data('stats').replace(/=>/g, ":"));
+          renderItemBackPackImage($(this).children("img").data('image'), index);
+          actualBackPack[index] = JSON.parse($(this).children("img").data('stats').replace(/=>/g, ":"));
           countNotNulls++;
           break;
         }
@@ -196,8 +185,9 @@ $(document).ready( function(){  //events handlers
       window.localStorage.setItem("actualBackPackItemsStats", JSON.stringify(actualBackPack));
       setTotalStats();
     }
-    else{
+    if(countNotNulls === 6){
       console.log("Build completa");
+      $(".js-alert-bpi").fadeIn();
     }
   });
 
