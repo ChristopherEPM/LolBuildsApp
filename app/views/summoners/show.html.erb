@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Summoner Stats</title>
+</head>
+<body>
+<article>
+<p>Total kills:<%=@kills%>  Total Deaths:<%=@deaths%>Total Asssits:<%=@assists%> </p>
+<p>Total sesions Played:<%=@played_games%> </p>
+  <p>K/D/A:<%= "#{@kills_average}/#{@death_average}/#{@assist_average}"%> WINRATE: <%= @winrate%></p>
+</article> 
+  
+</body>
+</html>
