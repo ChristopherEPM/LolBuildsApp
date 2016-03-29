@@ -1,9 +1,12 @@
-<article class="main-wrapper">
+<article class="main-wrapper col-md-10">
   <div class="champions-grid">
     
-      <% @champions.sort_by!{|champ| champ.name }.each do | champion | %>
-        <a href=<%= champion_path(champion.id) %>><img class="champions-grid-main" src=<%="http://ddragon.leagueoflegends.com/cdn/6.5.1/img/champion/#{champion.image['full']}" %> alt="Link to <%= champion.name%> profile" title="<%="#{champion.name}, #{champion.title}" %>" > </a>
+      <% @champions.sort_by{|champ| champ.name }.each do | champion | %>
+        <div class="js-champion-square champion-square">
+          <a href=<%= champion_path(champion.api_id) %> class="js-hi"><img class="champions-grid-main" src=<%="http://ddragon.leagueoflegends.com/cdn/#{@version}/img/champion/#{champion.image}" %> alt="Link to <%= champion.name%> profile" title="<%="#{champion.name}, #{champion.title}" %>" > </a>
+          <div class="js-champ-name-box champion-square-namebox"><span class="champion-square-name"><%= champion.name%></span></div>
+        </div>
       <% end %>
-
+      
   </div>
 </article>
