@@ -42,7 +42,11 @@ gem 'figaro'
 gem 'ruby-lol'
 
 gem 'sass'
+gem 'normalize-rails'
 gem 'haml'
+
+#for cron jobs
+gem 'whenever', require: false
 
 group :development, :test do
   gem 'rspec-rails'
