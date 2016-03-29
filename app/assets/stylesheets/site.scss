@@ -1,3 +1,25 @@
 // Place all the styles related to the site controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+.champion-square{
+  float: left;
+  margin: 5px;
+  height: 120px;
+  width: 120px;
+  position:relative;
+  .champion-square-namebox{
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    background-color: #FFE0E8;
+    min-height: 10px;
+    opacity: 0.5;
+    color:#1A1718;
+    text-align: center;
+    .champion-square-name{
+      font-weight: bold;
+    }
+  }
+}
+

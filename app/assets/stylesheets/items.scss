@@ -1,3 +1,128 @@
 // Place all the styles related to the items controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+.row{
+  margin-top: 30px;
+}
+.items-wrapper{
+  margin-top: 20px;
+}
+.item-wrapper{
+  margin-top:10px;
+}
+.item-image{
+  -webkit-border-radius: 20px;
+  -moz-border-radius: 20px;
+  border-radius: 20px;
+  margin-right: 5px;
+  margin-left: 5px;
+}
+.itemlist{
+  min-width: 320px;
+  width: 20%;
+  height: 375px;
+  overflow: scroll;
+  overflow-x: hidden;
+  margin-left: 10px;
+}
+.itemlist-element{
+  width: 100%;
+  display: inline-block;
+  background-color: #304F99;
+  padding:5px 5px 5px 5px;
+}
+.itemlist-element:hover{
+  background-color: #ff8f00;
+}
+.item-name{
+  color:#CFE8FF;
+  margin-left: 5px;
+  vertical-align: super; 
+}
+.item-wrapper-title{
+  background-color:#192E70;
+  color:#CFE8FF;
+  font-size: 24px;
+  display: inline-block;
+  min-width: 320px;
+  width:20%;
+  text-align: center;
+  height: 5%;
+  margin-left:10px;
+}
+.backpack-wrapper{
+  margin-top: 10px;
+  background-color:#002237;
+  max-width: 28%;
+  min-width: 434px;
+  height: 140px;
+}
+.backpack-wrapper-title{
+  background-color:#192E70;
+  color:#CFE8FF;
+  font-size: 24px;
+  display: inline-block;
+  min-width: 305px;
+  text-align: center;
+  height: 32%;
+  width: 100%;
+}
+.backpack-items{
+  padding-left:10px;
+}
+.backpack-item-image{
+  margin: 8px;
+  width: 46px;
+  -webkit-transition: width 2s, height 2s, -webkit-transform 2s; 
+  transition: width 2s, height 2s, transform 1s, border-radius 2s;
+
+}
+
+.backpack-item-image:hover{
+  width: 80px;
+  -webkit-border-radius: 50px;
+  -moz-border-radius: 50px;
+  border-radius: 50px;
+  -webkit-transform: rotate(360deg); 
+  transform: rotate(360deg);
+  -webkit-transition: width 1s, -webkit-transform 1s, -webkit-border-radius 1s; 
+  transition: width 1s, transform 1s, border-radius 1s;
+}
+.items-stats-ul{
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
+.items-stats-wrapper{
+  max-width: 200px;
+  margin:10px;
+}
+.items-wrapper-title{
+  background-color:#192E70;
+  color:#CFE8FF;
+  font-size: 24px;
+  display: inline-block;
+  min-width: 200px;
+  text-align: center;
+  width: 100%;
+}
+.items-stats-ul li{
+  display:inline-block;
+  padding:5px;
+  border: 2px solid #e7e7e7;
+  background-color: #01579b;
+  color:#BDBBC9;
+  min-width: 200px;
+  border-radius: 5px;
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+}
+.items-stats-ul-span{
+  display: inline-block;
+  color: #ff8f00;
+  margin-left: 4px;
+}
+.alert{
+  margin-top: 22px;
+  max-width: 386px;
+}

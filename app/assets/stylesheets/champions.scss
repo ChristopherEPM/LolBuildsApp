@@ -1,6 +1,9 @@
 // Place all the styles related to the champions controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+.main-wrapper{
+  padding:0;
+}
 .champ-splast-wrapper{
   width: 100%;
   height: 200px;
@@ -9,9 +12,12 @@
   background-repeat: no-repeat;
   background-size: 100%;
 }
-
+.profile-champ-info{
+  padding: 10px;
+}
 .profile-champion-name{
-  color:#E7EDE8;
+  color:#F58C56;
+  font-size: 28px;
 }
 .profile-champion-icon{
   border-radius: 150px;
@@ -20,9 +26,31 @@
 }
 .profile-champion-title{
   color: #D2D4DB;
+  font-style: italic;
 }
 .profile-champion-tags{
-  position: relative;
-  float: right;
-  color: #D2D4DB; 
+  color: #9CEE1E; 
+  font-style: italic;
+}
+
+.champ-stats-ul{
+  list-style-type: none;
+}
+.champ-stats-ul li{
+  display:inline-block;
+  padding:5px;
+  border: 2px solid #e7e7e7;
+  background-color: #0d47a1;
+  color:#f9a825;
+  min-width: 200px;
+  height: 34px;
+  border-radius: 5px;
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+  
+}
+.champ-stats-ul span{
+  display: inline-block;
+  color: #97BF2E;
+  margin-left: 4px;
 }
