@@ -1,6 +1,5 @@
 require 'lol'
 class Gameversion < ActiveRecord::Base
-  
 
   def update_with_api
     client = Lol::Client.new ENV["RIOT_DEV_API_KEY"], {region: "euw"}
@@ -16,4 +15,5 @@ class Gameversion < ActiveRecord::Base
       version: apiv
     })
   end
+  
 end
