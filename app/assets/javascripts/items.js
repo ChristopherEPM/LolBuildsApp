@@ -1,10 +1,5 @@
 // Place all the behaviors and hooks related to the matching controller here.
 // All this logic will automatically be available in application.js.
-Number.prototype.toFixedDown = function(digits) {
-    var re = new RegExp("(\\d+\\.\\d{" + digits + "})(\\d)"),
-        m = this.toString().match(re);
-    return m ? parseFloat(m[1]) : this.valueOf();
-};
 
 var extractItemStats = function(itemIndex){
 
@@ -39,15 +34,11 @@ var getItemStats =  function(itemStats){
   var totalStats = { PercentAttackSpeed: 0, FlatMagicDamage:0, FlatPhysicalDamage: 0, 
     FlatMovementSpeed: 0, PercentMovementSpeed: 0, FlatCritChance: 0, FlatArmor: 0, FlatSpellBlock: 0, 
     FlatHPPool: 0, FlatHPRegen: 0, FlatMPPool: 0, PercentLifeSteal: 0 };
-  if("PercentAttackSpeedMod" in itemStats ){
-    totalStats["PercentAttackSpeed"] += itemStats["PercentAttackSpeedMod"];
-  }
-  if("FlatMagicDamageMod" in itemStats ){
-    totalStats["FlatMagicDamage"] += itemStats["FlatMagicDamageMod"];
-  }
-  if("FlatPhysicalDamageMod" in itemStats ){
-    totalStats["FlatPhysicalDamage"] += itemStats["FlatPhysicalDamageMod"];
-  }
+
+  totalStats["PercentAttackSpeed"] +=  checkAttackSpeed(itemStats);
+  totalStats["FlatMagicDamage"] += checkMagicDamage(itemStats);
+  totalStats["FlatPhysicalDamage"] += checkPhysicalDamage(itemStats);
+  //totalStats["FlatMovementSpeed"] += checkFlatMovementSpeed(itemStats);
   if("FlatMovementSpeedMod" in itemStats ){
     totalStats["FlatMovementSpeed"] += itemStats["FlatMovementSpeedMod"];
     if("PercentMovementSpeed" in itemStats){
@@ -60,29 +51,55 @@ var getItemStats =  function(itemStats){
       totalStats["FlatMovementSpeed"] = (totalStats["FlatMovementSpeed"] * totalStats["PercentMovementSpeed"]) + totalStats["FlatMovementSpeed"];
     }
   }
-  if("FlatCritChanceMod" in itemStats ){
-    totalStats["FlatCritChance"] += itemStats["FlatCritChanceMod"];
-  }
-  if("FlatArmorMod" in itemStats ){
-    totalStats["FlatArmor"] += itemStats["FlatArmorMod"];
-  }
-  if("FlatSpellBlockMod" in itemStats ){
-    totalStats["FlatSpellBlock"] += itemStats["FlatSpellBlockMod"];
-  }
-  if("FlatHPPoolMod" in itemStats ){
-    totalStats["FlatHPPool"] += itemStats["FlatHPPoolMod"];
-  }
-  if("FlatHPRegenMod" in itemStats ){
-    totalStats["FlatHPRegen"] += itemStats["FlatHPRegenMod"];
-  }
-  if("FlatMPPoolMod" in itemStats ){
-    totalStats["FlatMPPool"] += itemStats["FlatMPPoolMod"];
-  }
-  if("PercentLifeStealMod" in itemStats ){
-    totalStats["PercentLifeSteal"] += itemStats["PercentLifeStealMod"];
-  }
+  totalStats["FlatCritChance"] += checkCritChance(itemStats);
+  totalStats["FlatArmor"] += checkArmor(itemStats);
+  totalStats["FlatSpellBlock"] += checkSpellBlock(itemStats);
+  totalStats["FlatHPPool"] += checkHPPool(itemStats);
+  totalStats["FlatHPRegen"] += checkHPRegen(itemStats);
+  totalStats["FlatMPPool"] += checkMPPool(itemStats);
+  totalStats["PercentLifeSteal"] += checkLifeSteal(itemStats);
   return totalStats;
 }
+var checkFlatMovementSpeed = function(itemStats){
+
+
+  return itemStats["FlatMagicDamageMod"] || 0;
+}
+var checkPercentMovementSpeed = function(itemStats){
+  return itemStats["PercentMovementSpeedMod"] || 0;
+}
+var checkAttackSpeed = function(itemStats){
+  return itemStats["PercentAttackSpeedMod"] * 100 || 0;
+}
+var checkMagicDamage = function(itemStats){
+  return itemStats["FlatMagicDamageMod"] || 0;
+}
+var checkPhysicalDamage = function(itemStats){
+  return itemStats["FlatPhysicalDamageMod"] || 0;
+}
+var checkCritChance = function(itemStats){
+  return itemStats["FlatCritChanceMod"] * 100 || 0;
+}
+var checkArmor = function(itemStats){
+  return itemStats["FlatArmorMod"] || 0;
+}
+var checkSpellBlock = function(itemStats){
+  return itemStats["FlatSpellBlockMod"] || 0;
+}
+var checkHPPool = function(itemStats){
+  return itemStats["FlatHPPoolMod"] || 0;
+}
+var checkHPRegen = function(itemStats){
+  return itemStats["FlatHPRegenMod"] || 0;
+}
+var checkMPPool = function(itemStats){
+  return itemStats["FlatMPPoolMod"] || 0;
+}
+var checkLifeSteal = function(itemStats){
+  return itemStats["PercentLifeStealMod"] * 100 || 0;
+}
+
+
 var getTotalStats = function(arrayStats){
   var itemsTotalStats = { PercentAttackSpeed: 0, FlatMagicDamage:0, FlatPhysicalDamage: 0, 
     FlatMovementSpeed: 0, PercentMovementSpeed: 0, FlatCritChance: 0, FlatArmor: 0, FlatSpellBlock: 0, 
@@ -105,30 +122,30 @@ var getTotalStats = function(arrayStats){
   return itemsTotalStats;
 }
 var renderAllStats = function(arrayTotalStats){
-   $('.js-percentAttackSpeed').text(arrayTotalStats["PercentAttackSpeed"].toFixedDown(3));
-   $('.js-percentAttackSpeed').attr('data-statsAmount', arrayTotalStats["PercentAttackSpeed"].toFixedDown(3));
-   $('.js-flatMagicDamage').text(arrayTotalStats["FlatMagicDamage"].toFixedDown(3));
-   $('.js-flatMagicDamage').attr('data-statsAmount',arrayTotalStats["FlatMagicDamage"].toFixedDown(3));
-   $('.js-flatPhysicalDamage').text(arrayTotalStats["FlatPhysicalDamage"].toFixedDown(3));
-   $('.js-flatPhysicalDamage').attr('data-statsAmount', arrayTotalStats["FlatPhysicalDamage"].toFixedDown(3));
-   $('.js-flatMovementSpeed').text(arrayTotalStats["FlatMovementSpeed"].toFixedDown(3));
-   $('.js-flatMovementSpeed').attr('data-statsAmount', arrayTotalStats["FlatMovementSpeed"].toFixedDown(3));
-   $('.js-percentMovementSpeed').text(arrayTotalStats["PercentMovementSpeed"].toFixedDown(3));
-   $('.js-percentMovementSpeed').attr('data-statsAmount', arrayTotalStats["PercentMovementSpeed"].toFixedDown(3));
-   $('.js-flatCritChance').text(arrayTotalStats["FlatCritChance"].toFixedDown(3));
-   $('.js-flatCritChance').attr('data-statsAmount', arrayTotalStats["FlatCritChance"].toFixedDown(3));
-   $('.js-flatArmor').text(arrayTotalStats["FlatArmor"].toFixedDown(3));
-   $('.js-flatArmor').attr('data-statsAmount', arrayTotalStats["FlatArmor"].toFixedDown(3));
-   $('.js-flatSpellBlock').text(arrayTotalStats["FlatSpellBlock"].toFixedDown(3));
-   $('.js-flatSpellBlock').attr('data-statsAmount', arrayTotalStats["FlatSpellBlock"].toFixedDown(3));
-   $('.js-flatHPPool').text(arrayTotalStats["FlatHPPool"].toFixedDown(3));
-   $('.js-flatHPPool').attr('data-statsAmount', arrayTotalStats["FlatHPPool"].toFixedDown(3));
-   $('.js-flatHPRegen').text(arrayTotalStats["FlatHPRegen"].toFixedDown(3));
-   $('.js-flatHPRegen').attr('data-statsAmount', arrayTotalStats["FlatHPRegen"].toFixedDown(3));
-   $('.js-flatMPPool').text(arrayTotalStats["FlatMPPool"].toFixedDown(3));
-   $('.js-flatMPPool').attr('data-statsAmount', arrayTotalStats["FlatMPPool"].toFixedDown(3));
-   $('.js-percentLifeSteal').text(arrayTotalStats["PercentLifeSteal"].toFixedDown(3));
-    $('.js-percentLifeSteal').attr('data-statsAmount', arrayTotalStats["PercentLifeSteal"].toFixedDown(3));
+  $('.js-percentAttackSpeed').text(arrayTotalStats["PercentAttackSpeed"].toFixedDown(3));
+  $('.js-percentAttackSpeed').attr('data-statsAmount', arrayTotalStats["PercentAttackSpeed"].toFixedDown(3));
+  $('.js-flatMagicDamage').text(arrayTotalStats["FlatMagicDamage"].toFixedDown(3));
+  $('.js-flatMagicDamage').attr('data-statsAmount',arrayTotalStats["FlatMagicDamage"].toFixedDown(3));
+  $('.js-flatPhysicalDamage').text(arrayTotalStats["FlatPhysicalDamage"].toFixedDown(3));
+  $('.js-flatPhysicalDamage').attr('data-statsAmount', arrayTotalStats["FlatPhysicalDamage"].toFixedDown(3));
+  $('.js-flatMovementSpeed').text(arrayTotalStats["FlatMovementSpeed"].toFixedDown(3));
+  $('.js-flatMovementSpeed').attr('data-statsAmount', arrayTotalStats["FlatMovementSpeed"].toFixedDown(3));
+  $('.js-percentMovementSpeed').text(arrayTotalStats["PercentMovementSpeed"].toFixedDown(3));
+  $('.js-percentMovementSpeed').attr('data-statsAmount', arrayTotalStats["PercentMovementSpeed"].toFixedDown(3));
+  $('.js-flatCritChance').text(arrayTotalStats["FlatCritChance"].toFixedDown(3));
+  $('.js-flatCritChance').attr('data-statsAmount', arrayTotalStats["FlatCritChance"].toFixedDown(3));
+  $('.js-flatArmor').text(arrayTotalStats["FlatArmor"].toFixedDown(3));
+  $('.js-flatArmor').attr('data-statsAmount', arrayTotalStats["FlatArmor"].toFixedDown(3));
+  $('.js-flatSpellBlock').text(arrayTotalStats["FlatSpellBlock"].toFixedDown(3));
+  $('.js-flatSpellBlock').attr('data-statsAmount', arrayTotalStats["FlatSpellBlock"].toFixedDown(3));
+  $('.js-flatHPPool').text(arrayTotalStats["FlatHPPool"].toFixedDown(3));
+  $('.js-flatHPPool').attr('data-statsAmount', arrayTotalStats["FlatHPPool"].toFixedDown(3));
+  $('.js-flatHPRegen').text(arrayTotalStats["FlatHPRegen"].toFixedDown(3));
+  $('.js-flatHPRegen').attr('data-statsAmount', arrayTotalStats["FlatHPRegen"].toFixedDown(3));
+  $('.js-flatMPPool').text(arrayTotalStats["FlatMPPool"].toFixedDown(3));
+  $('.js-flatMPPool').attr('data-statsAmount', arrayTotalStats["FlatMPPool"].toFixedDown(3));
+  $('.js-percentLifeSteal').text(arrayTotalStats["PercentLifeSteal"].toFixedDown(3));
+  $('.js-percentLifeSteal').attr('data-statsAmount', arrayTotalStats["PercentLifeSteal"].toFixedDown(3));
 }
 
 var setTotalStats = function(){

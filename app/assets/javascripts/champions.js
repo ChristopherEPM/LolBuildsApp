@@ -7,8 +7,7 @@ Number.prototype.toFixedDown = function(digits) {
 };
 
 var getBaseStatsPerLevel = function(champLevel){
-    // var atack =$('#champ-attackdamage').data('stat');
-    // var bonusAtack = $('#champ-attackdamageperlevel').data('stat') * champLevel;
+    renderMoveSpeed( parseFloat($('#champ-movespeed').data('stat')) + (((parseFloat($('.js-flatMovementSpeed').attr('data-statsamount')) +parseFloat($('.js-flatMovementSpeed').attr('data-statsamount'))) * parseFloat($('.js-percentMovementSpeed').attr('data-statsamount')))) + parseFloat($('.js-flatMovementSpeed').attr('data-statsamount'))); 
     if(parseFloat($('#champ-attackdamageperlevel').data('stat')) > 0){
       renderAtackDamage((parseFloat($('#champ-attackdamageperlevel').data('stat')) * champLevel) + parseFloat($('#champ-attackdamage').data('stat')) + parseFloat($('.js-flatPhysicalDamage').attr('data-statsamount')));
     }
