@@ -41,3 +41,8 @@ body{
 .nav-pills>li>a {
     border-radius: 0px !important;
 }
+.page-footer{
+  height: 70px;
+  background-color: #090B27;
+  text-align: center;
+}
