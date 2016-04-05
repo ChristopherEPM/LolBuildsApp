@@ -6,9 +6,11 @@
 </head>
 <body>
 <article>
-<p>Total kills:<%=@kills%>  Total Deaths:<%=@deaths%>Total Asssits:<%=@assists%> </p>
-<p>Total sesions Played:<%=@played_games%> </p>
+<div>
+  <p>Total kills:<%=@kills%>  Total Deaths:<%=@deaths%>Total Asssits:<%=@assists%> </p>
+  <p>Total sesions Played:<%=@played_games%> </p>
   <p>K/D/A:<%= "#{@kills_average}/#{@death_average}/#{@assist_average}"%> WINRATE: <%= @winrate%></p>
+  </div>
 </article> 
   
 </body>

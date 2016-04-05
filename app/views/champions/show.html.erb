@@ -10,11 +10,12 @@
           <%end%>
         </p>
         <img class="profile-champion-icon" src=<%="http://ddragon.leagueoflegends.com/cdn/#{@version}/img/champion/#{@champion.image}" %>>
+        <span class="withe">Champion stats at Level <input type="number" min="1" max="18" name="champ-lv" size="40" class="js-champlv numcolor" 
+          size="30" value="1"></span>
       </div>
     </div>
     <div class="champ-stats">
-      <ul class="champ-stats-ul row"> <h3 class="withe">Champion stats at Level <input type="number" min="1" max="18" name="champ-lv" size="40" class="js-champlv numcolor" 
-          size="30" value="1"></h3>
+      <ul class="champ-stats-ul row"> 
           
         <li>Attack damage: 
           <span id="champ-attackdamage" data-stat="<%= @champion.stats['attackdamage']%>"
